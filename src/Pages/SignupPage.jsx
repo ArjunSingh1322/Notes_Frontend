@@ -122,6 +122,7 @@ const SignupPage = () => {
 
   // ✅ Backend URL from .env file
   let BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  console.log(BASE_URL)
 
   function handleInputChange(e) {
     const newName = e.target.value;
