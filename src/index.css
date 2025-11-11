@@ -1,68 +1,259 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* General Styles */
+.container { 
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+.header {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+.heading {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.userGreeting {
+  font-size: 1rem;
+  color: #666;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.logoutButton {
+  padding: 6px 12px;
+  background: #ff5252;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.createButton {
+  padding: 10px 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modalTitle {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.4rem;
+}
+
+.input,
+.textarea {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  width: 90%;
+  font-size: 1rem;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.cancelButton {
+  padding: 8px 16px;
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.saveButton {
+  padding: 8px 16px;
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.notesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.noteCard {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem;
+  border-left: 4px solid #4CAF50;
+}
+
+.noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.noteTitle {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.noteActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.deleteButton {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid #f44336;
+  color: #f44336;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.noteContent {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.noteFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.noteDate {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .header {
+    flex-direction: column;  /* Stack header items vertically */
+    justify-content: flex-start;  /* Align the header content at the top */
   }
-  button {
-    background-color: #f9f9f9;
+
+  .headerRight {
+    margin-top: auto;  /* Push the userGreeting and logoutButton to the bottom */
+    order: 1;  /* Ensure it moves to the bottom of the container */
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .createButton {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  .modalBox {
+    width: 60%;
+    padding: 15px;
+  }
+
+  .modalTitle {
+    font-size: 1.2rem;
+  }
+
+  .input, .textarea {
+    font-size: 0.9rem;
+  }
+
+  .notesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .noteCard {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .createButton {
+    font-size: 0.85rem;
+    padding: 9px 20px;
+  }
+
+  .modalBox {
+    width: 100%;
+    padding: 50px;
+  }
+
+  .noteTitle {
+    font-size: 1rem;
+  }
+
+  .noteContent {
+    font-size: 0.9rem;
   }
 }
